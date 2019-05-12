@@ -1,14 +1,22 @@
 const json2csv = require('json2csv').parse;
-
 const fields = ['_id', 'name', 'thumb',];
 const opts = { fields };
+const fs = require('fs');
+var uuid = require('uuid');
 
 
-module.exports = new function tocsv(myData) {
+module.exports.tocsv = function (characters) {
     try {
-        
-        const csv = json2csv(myData, opts);
-        console.log(csv);
+
+        const csv = json2csv(characters, opts);
+        const filename = uuid.v4() + ".csv"
+        fs.writeFile('./exports/' + filename, csv, function (err) {
+            if (err) throw err;
+            console.log('file saved');
+        });
+
+        return filename;
+
     } catch (err) {
         console.error(err);
     }

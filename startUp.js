@@ -12,6 +12,8 @@ app.use(bodyParser.urlencoded({
 
 app.use(bodyParser.json());
 app.use('/uploads', express.static(process.cwd() + '/uploads'))
+app.use('/exports', express.static(process.cwd() + '/exports'))
+
 
 app.use('/', index);
 app.use('/characters', CharacterRoute);

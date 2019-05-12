@@ -8,7 +8,8 @@
     "express": "^4.15.4",
     "json2csv": "^4.5.1",
     "mongoose": "^5.0.16",
-    "redis": "^2.8.0"
+    "redis": "^2.8.0",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "nodemon": "^1.19.0"

@@ -2,20 +2,9 @@
 
 const CharacterService = require('../services/characterService');
 const ExportData = require('../infra/exportTocsv');
-const fs = require('fs');
 
-
-/*
-teste
-*/
-
-const json2csv = require('json2csv').parse;
-const fields = ['_id', 'name', 'thumb',];
-const opts = { fields };
-
-var redis = require('redis');
-
-var client = redis.createClient();
+const redis = require('redis');
+const client = redis.createClient();
 
 exports.get = (req, res) => {
 
@@ -51,18 +40,11 @@ exports.getById = (req, res) => {
 exports.exportToCsv = (req, res) => {
     CharacterService.getAll()
         .then((characters) => {
-            //   ExportData.tocsv(characters);
-            const csv = json2csv(characters, opts);
-            fs.writeFile('file.csv', csv, function (err) {
-                if (err) throw err;
-                console.log('file saved');
-            });
-            res.status(200).send(characters);
+            let filename = ExportData.tocsv(characters);
+            res.download("./exports/" + filename);
+
         }).catch(err => res.status(500).send(err))
 }
-
-
-
 
 
 exports.post = (req, res) => {
