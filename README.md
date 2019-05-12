@@ -1,4 +1,4 @@
-﻿﻿# node-mongo-redis-tocsv
+# node-mongo-redis-tocsv
 
 ## Descrição
 
