@@ -6,7 +6,6 @@ const Character = require('../repositories/characterRepository');
 module.exports = new class CharacterRepository {
 
     getAll() {
-        console.log("here");
         return Character.find();
     }
 
