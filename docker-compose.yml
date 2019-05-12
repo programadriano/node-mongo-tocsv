@@ -1,0 +1,17 @@
+version: "3"
+services: 
+  api_dev:    
+    image: tadrianonet/apiCharacter
+    ports:
+      - "80:3000"
+    links:
+      - link-db
+  link-db:         
+    image: tutum/mongodb 
+    ports:
+      - "27017:27017"
+      - "28017:28017"   
+    environment:
+      - AUTH=no
+  redis:
+    image: "redis:alpine"
