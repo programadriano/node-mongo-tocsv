@@ -1,8 +1,9 @@
 const json2csv = require('json2csv').parse;
-const fields = ['_id', 'name', 'thumb',];
-const opts = { fields };
 const fs = require('fs');
 var uuid = require('uuid');
+
+const fields = ['_id', 'name', 'thumb',];
+const opts = { fields };
 
 
 module.exports.tocsv = function (characters) {
